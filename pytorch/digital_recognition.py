@@ -5,7 +5,7 @@ import pandas
 C=ai.torch_ai()
 
 #训练ai
-mnist_train=ai.MnistDataset('pytorch\mnist_train_100.csv')
+mnist_train=ai.MnistDataset('python\pytorch\mnist_train_100.csv')
 epochs=10
 for i in range (epochs):
     print('training epoch',i+1,'of',epochs)
@@ -16,7 +16,7 @@ for i in range (epochs):
 C.plot_progress()
 
 #单个测试
-mnist_test=ai.MnistDataset('pytorch/mnist_test_10.csv')
+mnist_test=ai.MnistDataset('python\pytorch\mnist_test_10.csv')
 record=1
 mnist_test.plot_image(record)
 image_data=mnist_test[record][1]

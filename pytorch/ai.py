@@ -14,13 +14,13 @@ class torch_ai(nn.Module):
         #nn.Sequential()是用按顺序堆叠的方式构造神经网络的函数，输出分类任务中各类别的预测概率
         self.model=nn.Sequential(
             nn.Linear(784,200), #神经网络的线性层
-            nn.Sigmoid(), #S激活函数
+            nn.LeakyReLU(0.02), #带泄漏线性整流激活函数
             nn.Linear(200,10), 
             nn.Sigmoid()
             
         )
-        self.loss_fuction=nn.MSELoss() #均方差损失函数
-        self.optimiser=torch.optim.SGD(self.parameters(),lr=0.01) #将SGD作为优化器负责根据损失函数计算的梯度更新链接权重
+        self.loss_fuction=nn.BCELoss() #二元交叉熵损失函数
+        self.optimiser=torch.optim.Adam(self.parameters(),lr=0.01) #Adam优化器
         self.counter=0 #初始化训练次数变量
         self.progress=[] #初始化记录损失值的列表
         pass

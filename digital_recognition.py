@@ -6,11 +6,11 @@ import matplotlib.pyplot
 digital_recognition = neural_net.smile(inputnodes=784,hiddennodes=100,outputnodes=10,learningrate=0.3)
 
 #打开数据文件
-data_file = open('mnist_train_100.csv','r') #打开训练文件，只读
+data_file = open('numpy\mnist_train_100.csv','r') #打开训练文件，只读
 data_list = data_file.readlines()           #读取所有行，转化为字符串列表
 data_file.close()                         #关闭文件
 
-for j in range(10):
+for j in range(6):
     for i in range(len(data_list)):
         #对数据进行处理，生成输入值
         str_list=data_list[i].split(',')                #将字符串分割，形成一个字符串列表
@@ -20,9 +20,8 @@ for j in range(10):
         targets = numpy.zeros(onodes) + 0.01
         targets[int(str_list[0])] = 0.99
         data_train = digital_recognition.train(inputs_list = inputs,targets_list = targets)
-        print(f"第{j}次循环测试，手写数字{str_list[0]}")
         if int(str_list[0]) == int(numpy.argmax(data_train)):
-            print(f"识别为{numpy.argmax(data_train)}的概率为{max(data_train)[0]*100:.2f}%,")
+            print(f"手写数字{str_list[0]}识别为{numpy.argmax(data_train)}的概率为{max(data_train)[0]*100:.2f}%,")
 
 numpy.set_printoptions(threshold=numpy.inf, linewidth=numpy.inf)
 who_matrix = open('output_matrix','w')

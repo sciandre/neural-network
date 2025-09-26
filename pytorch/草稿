@@ -1,7 +1,0 @@
-import torch
-device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
-print("CUDA 是否可用：", torch.cuda.is_available())
-print("当前设备：", device)
-print(torch.__version__)
-print(torch.version.cuda)
